@@ -72,6 +72,10 @@ public class Room {
     public Building getBuilding() {
         return building;
     }
+    
+    public void setTargetTemperature(Double targetTemperature) {
+        this.targetTemperature = targetTemperature;
+    }
 
     public Integer getFloor() {
         return floor;
