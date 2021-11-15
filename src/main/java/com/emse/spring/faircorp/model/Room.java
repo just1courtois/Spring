@@ -47,7 +47,7 @@ public class Room {
         return currentTemperature;
     }
     public Double getTargetTemperature() {
-        return currentTemperature;
+        return targetTemperature;
     }
 
     public String getName() {
