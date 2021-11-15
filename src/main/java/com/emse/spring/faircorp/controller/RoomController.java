@@ -89,5 +89,15 @@ public class RoomController {
         List<Heater> heaters = heaterDao.findHeatersInARoom(id);
         heaters.stream().forEach(heater -> heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF: HeaterStatus.ON));
     }
+    
+        //Update a room
+    @PutMapping(path = "/{id}")
+    public RoomDto updateTargetTemperature(@PathVariable Long id, @RequestBody RoomDto room) {
+        Room original = roomDao.findById(id).orElseThrow(IllegalArgumentException::new);
+
+        original.setTargetTemperature(room.getTargetTemperature());
+
+        return new RoomDto(original);
+    }
 
 }
