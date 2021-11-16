@@ -9,11 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+// Je définis ici mes queries personnalisées sur le model room
 
 public class RoomDaoCustomImpl implements RoomDaoCustom {
 
     @PersistenceContext
     private EntityManager em;
+    
+    // J'affiche ici la room dont l'id a été entré
 
     public List<Room> findRoom(Long id) {
         String jpql = "select w from Room where id = :id";
@@ -22,6 +25,7 @@ public class RoomDaoCustomImpl implements RoomDaoCustom {
                 .getResultList();
     }
 
+    // Cette query liste tous les heaters présents dans la room dont on a rentré l'id
     @Override
     public List<Heater> findRoomHeaters(Long id) {
         String jpql="select h from Heater h where h.room.id=:id";
@@ -30,6 +34,7 @@ public class RoomDaoCustomImpl implements RoomDaoCustom {
                 .getResultList();
     }
 
+    // Cette query liste tous les windows présents dans la room dont on a rentré l'id
     @Override
     public List<Window> findRoomWindows(Long id) {
         String jpql="select w from Window w where w.room.id=:id";
@@ -38,6 +43,7 @@ public class RoomDaoCustomImpl implements RoomDaoCustom {
                 .getResultList();
     }
 
+    // Cette query supprime l'ensemble des rooms présents dans un building dont on a rentré l'id
     @Override
     public void deleteAllRoomsInABuilding(Long id) {
         String jpql = "delete from Room r where r.building.id=:id";
