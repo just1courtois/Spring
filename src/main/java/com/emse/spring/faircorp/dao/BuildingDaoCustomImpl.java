@@ -8,11 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+// Je crée mes queries personnalisées ici
+
 public class BuildingDaoCustomImpl implements BuildingDaoCustom{
     @PersistenceContext
     private EntityManager em;
 
-    @Override
+    @Override //Je crée la query qui va me permettre de lister toutes les rooms contenues dans un building
     public List<Room> findBuildingRooms(Long id) {
         String jpql="select r from Room r where r.building.id=:id";
         return em.createQuery(jpql, Room.class)
