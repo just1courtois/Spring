@@ -4,15 +4,17 @@ package com.emse.spring.faircorp.model;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity// (1)
-@Table(name = "BUILDING")// (2)
+// Creation du model building
+
+@Entity
+@Table(name = "BUILDING")
 public class Building {
     @Id // (3).
     @GeneratedValue
 
     private Long id;
 
-    @Column(nullable = false, length = 255)// (4)
+    @Column(nullable = false, length = 255)
     private String name;
 
     @OneToMany(mappedBy = "building")  //Parent of rooms
