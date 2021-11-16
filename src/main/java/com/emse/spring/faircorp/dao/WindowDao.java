@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+// Dao pour le model window
+
 public interface WindowDao extends JpaRepository <Window, Long>, WindowDaoCustom {
 
 
