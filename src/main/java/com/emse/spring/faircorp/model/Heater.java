@@ -3,6 +3,8 @@ package com.emse.spring.faircorp.model;
 
 import javax.persistence.*;
 
+// Creation du model heater
+
 @Entity
 
 public class Heater {
