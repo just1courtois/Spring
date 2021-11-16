@@ -4,7 +4,7 @@ import com.emse.spring.faircorp.model.Room;
 import com.emse.spring.faircorp.model.Window;
 import com.emse.spring.faircorp.model.WindowStatus;
 
-// Dto pour le model window
+// Dto pour le model window 
 
 public class WindowDto {
     private Long id;
