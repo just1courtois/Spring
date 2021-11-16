@@ -2,6 +2,8 @@ package com.emse.spring.faircorp.dto;
 
 import com.emse.spring.faircorp.model.*;
 
+// Dto pour le model heater
+
 public class HeaterDto {
 
     private Long id;
