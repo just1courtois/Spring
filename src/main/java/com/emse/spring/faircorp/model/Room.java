@@ -3,6 +3,8 @@ package com.emse.spring.faircorp.model;
 import javax.persistence.*;
 import java.util.Set;
 
+// creation du model room
+
 @Entity
 public class Room {
 
@@ -63,7 +65,7 @@ public class Room {
 
 
     @ManyToOne //child of Building
-    private Building building ;//define building
+    private Building building ;
 
     public void setBuilding(Building building) {
         this.building = building;
