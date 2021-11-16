@@ -4,6 +4,8 @@ import com.emse.spring.faircorp.model.*;
 
 import java.util.List;
 
+// Dto pour le model room
+
 public class RoomDto {
 
     private Long id;
