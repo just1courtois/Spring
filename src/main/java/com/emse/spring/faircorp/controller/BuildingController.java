@@ -16,10 +16,12 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Controller pour la gestion des building
+
 @CrossOrigin
-@RestController // (1)
-@RequestMapping("/api/buildings") // (2)
-@Transactional // (3)
+@RestController 
+@RequestMapping("/api/buildings") 
+@Transactional 
 
 
 public class BuildingController {
@@ -37,12 +39,12 @@ public class BuildingController {
         this.heaterDao = heaterDao;
     }
 
-    @GetMapping
+    @GetMapping //je demande à l'api de me lister l'ensemble des buildings existants
     public List<BuildingDto> findAll() {
         return buildingDao.findAll().stream().map(BuildingDto::new).collect(Collectors.toList());  // (6)
     }
 
-    @PostMapping // (8)
+    @PostMapping // Je créee un nouveau building s'il l'id entré n'existe pas
     public BuildingDto create(@RequestBody BuildingDto dto) {
         Building building = null;
         // On creation id is not defined
@@ -54,12 +56,12 @@ public class BuildingController {
         return new BuildingDto(building);
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/{id}") // j'obtiens l'ensemble des informations concernant un building en rentrant son id
     public BuildingDto findById(@PathVariable Long id) {
         return buildingDao.findById(id).map(BuildingDto::new).orElse(null);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/{id}") // Je supprime le building dont j'ai entré l'id ainsi que tous les rooms, windows et heaters liés à celui ci
     public void delete(@PathVariable Long id) {
         windowDao.deleteAllWindowsInABuilding(id);
         heaterDao.deleteAllHeatersInABuilding(id);
@@ -69,7 +71,7 @@ public class BuildingController {
 
     }
 
-    @GetMapping(path="/{id}/rooms")
+    @GetMapping(path="/{id}/rooms") // Je liste toute les rooms que contient le building dont j'ai rentre l'id
     public List<RoomDto> findAllRooms(@PathVariable Long id) {
         List<Room> rooms= buildingDao.findBuildingRooms(id);
         return rooms.stream().map(RoomDto::new).collect(Collectors.toList());
