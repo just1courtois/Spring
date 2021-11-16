@@ -3,6 +3,8 @@ package com.emse.spring.faircorp.dto;
 import com.emse.spring.faircorp.model.Building;
 import com.emse.spring.faircorp.model.Room;
 
+// Dto pour le model building
+
 public class BuildingDto {
 
     private Long id;
