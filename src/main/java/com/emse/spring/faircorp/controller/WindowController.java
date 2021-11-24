@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 // Controller pour gérer les windows
 
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController 
     @RequestMapping("/api/windows")
     @Transactional 
